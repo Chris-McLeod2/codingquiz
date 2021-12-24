@@ -5,6 +5,7 @@ let finalContainer = document.getElementById("finalContainer");
 let beginQuiz = document.getElementById("beginQuiz");
 let Question = document.getElementById("questionTitle");
 let resultContainer = document.getElementById("resultContainer");
+let resultResponse = document.getElementById("resultResponse")
 let btnAnswer1 = document.getElementById("answer1");
 let btnAnswer2 = document.getElementById("answer2");
 let btnAnswer3 = document.getElementById("answer3");
@@ -13,31 +14,24 @@ let finalScore = document.getElementById("finalScore");
 let score = 0;
 let time = document.getElementById("time");
 let countdown = 75;
-let submitButton = document.getElementById("ScoreButton");
-let answerButton = document.getElementById(".answerbtn");
-//let answerValue = answer.value;
+let answer = document.querySelector(".answerbtn");
+let answerValue = answer.value;
 let endScore = 0;
+let highScores = document.getElementById("highScores")
 //end of declarations//
 
 let quizQuestions = [
+  
     {
-        q: "placeholder",
-        answer1: "placeholder",
-        answer2: "placehoolder",
-        answer3: "placeholder",
-        answer4: "placeholder",
-
+        q: "",
+        answer1: "",
+        answer2: "",
+        answer3: "",
+        answer4: "",
+        correctAnswer: ""
     },
     {
-        q: "commonly used data types",
-        answer1: "hedgehog",
-        answer2: "probablywrong",
-        answer3: "alsoprobablywrong",
-        answer4: "whatifi'mright",
-        correctAnswer: "answer4"
-    },
-    {
-        q:"a question",
+        q:"a question1",
         answer1: "wrong",
         answer2: "wrong",
         answer3: "right",
@@ -45,7 +39,7 @@ let quizQuestions = [
         correctAnswer: "answer3"
     },
     {
-        q:"a question",
+        q:"a question2",
         answer1: "right",
         answer2: "wrong",
         answer3: "wrong",
@@ -53,7 +47,7 @@ let quizQuestions = [
         correctAnswer: "answer1"
     },
     {
-        q:"a question",
+        q:"a question3",
         answer1: "wrong",
         answer2: "right",
         answer3: "wrong",
@@ -61,7 +55,7 @@ let quizQuestions = [
         correctAnswer: "answer2"
     },
     {
-        q:"a question",
+        q:"a question4",
         answer1: "wrong",
         answer2: "wrong",
         answer3: "right",
@@ -69,7 +63,7 @@ let quizQuestions = [
         correctAnswer: "answer3"
     },
     {
-     q:"a question",
+     q:"a question5",
         answer1: "right",
         answer2: "wrong",
         answer3: "wrong",
@@ -77,7 +71,7 @@ let quizQuestions = [
         correctAnswer: "answer1"
     },
     {
-        q:"a question",
+        q:"a question6",
         answer1: "wrong",
         answer2: "wrong",
         answer3: "wrong",
@@ -141,56 +135,80 @@ function showQuestions() {
 btnAnswer1.addEventListener("click", function () {
 
     if (answer.value == quizQuestions[Quizindex].correctAnswer) {
-        resultResponse.style.display = 'block';
+        resultContainer.style.display = "block";
         results.textContent = "Correct";
+        console.log(correctAnswer)
     } else {
-        resultResponse.style.display = 'block';
+        resultContainer.style.display = "block";
         results.textContent = "Wrong";
-        countDown -= 10;
-
+        countdown -= 10;
+        console.log(correctAnswer)
     }
-    showQuestion();
+    showQuestions();
 });
 btnAnswer2.addEventListener("click", function () {
     if (answerValue === quizQuestions[Quizindex].correctAnswer) {
-        resultResponse.style.display = 'block';
+        resultContainer.style.display = 'block';
         results.textContent = "Correct";
-        // quizQuestions.shift();
-        // qIndex++;
+        console.log(correctAnswer)
     } else {
-        resultResponse.style.display = 'block';
+        resultContainer.style.display = 'block';
         results.textContent = "Wrong";
-        countDown -= 10;
-        // quizQuestions.shift();
-        // qIndex++
+        countdown -= 10;
+        console.log(correctAnswer)
     }
-    showQuestion();
+    showQuestions();
 });
 btnAnswer3.addEventListener("click", function () {
     if (answerValue === quizQuestions[Quizindex].correctAnswer) {
-        resultResponse.style.display = 'block';
+        resultContainer.style.display = 'block';
         results.textContent = "Correct";
-        // quizQuestions.shift();
-        // qIndex++;
+        console.log(correctAnswer)
     } else {
-        resultResponse.style.display = 'block';
+        resultContainer.style.display = 'block';
         results.textContent = "Wrong";
-        countDown -= 10;
-        // quizQuestions.shift();
-        // qIndex++
+        countdown -= 10;
+        console.log(correctAnswer)
     }
-    showQuestion();
+    showQuestions();
 });
 btnAnswer4.addEventListener("click", function () {
     if (answerValue !== quizQuestions[Quizindex].correctAnswer) {
-        resultResponse.style.display = 'block';
+        resultContainer.style.display = 'block';
         results.textContent = "Correct";
-
+        console.log(correctAnswer)
     } else {
-        resultResponse.style.display = 'block';
+        resultContainer.style.display = 'block';
         results.textContent = "Wrong";
-        countDown -= 10;
+        countdown -= 10;
+        console.log(correctAnswer)
     }
-    showQuestion();
+    showQuestions();
 });
 
+function quizEnd() {
+    clearInterval(quizInterval);
+    landingScreen.style.display = "none";
+    quizContainer.style.display = " none";
+    finalContainer.style.display ="block";
+    resultContainer.style.display ="none";
+    finalScore.textContent = countdown;
+    endScore = countdown;
+};
+
+let localStorage = window.localStorage;
+let scoreInitials = document.getElementById("scoreInitials");
+
+
+ScoreButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    let initials = scoreInitials.value.trim();
+    let highScore = JSON.parse(window.localStorage.getItem("highScore")) || [];
+    let playerScore = {
+        initials: initials,
+        score: endScore
+    };
+    highScore.push(playerScore);
+    window.localStorage.setItem("highScore", JSON.stringify(highScore));
+    location.replace("highscores.html")
+});

@@ -83,3 +83,16 @@ input {
 .submitButton:hover {
     background-color:yellow;
 }
+.highScoreContainer {
+    justify-content: center;
+    text-align: center;
+}
+.highScoreTitle {
+    font-size: 2.5em;
+}
+.scorePageButton {
+    background-color: magenta;
+}
+.scorePageButton:hover {
+    background-color: yellow;
+}
