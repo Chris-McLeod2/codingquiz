@@ -8,27 +8,29 @@
     <title>Coding Quiz</title>
 </head>
 <!-- add link to high score later -->.
-    <header>view high scores</header>
+    <header>
+    <a href="">view high scores</a>
+        <p id="time">Time: Havent Began</p>
+    </header>
 
-    <div class="landing" id="landingscreen">
+    <div class="landing" id="landingScreen">
         <h1 class="title">Coding Quiz!</h1>
         <p class="intro">Answer the questions as quick as you can wrong answers will be punished try to get a high score!</p>
-        <button class="startbtn" id="BeginQuiz">Begin Quiz</button>
+        <button class="startbtn" id="beginQuiz">Begin Quiz</button>
     </div>
     <div class="quizcontainer" id="quizContainer">
-        <h1 class="Question" id="QuestionTitle"></h1>
-
+        <h1 class="Question" id="questionTitle"></h1>
             <button class="answerbtn" id="answer1" value="answer1"></button>
             <button class="answerbtn" id="answer2" value="answer2"></button>
             <button class="answerbtn" id="answer3" value="answer3"></button>
             <button class="answerbtn" id="answer4" value="answer4"></button>
-            <div class="result" id="resultcontainer">
+            <div class="result" id="resultContainer">
                 <p class= "resultresponse" id="results"></p>
             </div>
     </div>
     <div class= "finalcontainer" id="finalContainer">
         <h1 class="finalheading">Congratulations on Finishing the quiz!</h1>
-        <p class="ScoreLine">You Completed the quiz with a score of <span id="finalscore"</span>.</p>
+        <p class="ScoreLine">You Completed the quiz with a score of <span id="finalScore"</span>.</p>
             <form>
                 <label for="initials" class="Scorelog">EnterInitials</label>
                 <input type="text" name="initials" id="scoreInitials">
@@ -37,7 +39,7 @@
     </div>
 
 <body>
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
 
 </html>

@@ -1,19 +1,19 @@
 header {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 header a {
-    margin: auto;
+    margin: auto 0;
     text-decoration: none;
     padding-left: 20px;
-    font-size: 3em;
+    font-size: 1em;
 }
 header p {
-    padding: 20px 40px;
+    padding: 10px 20px;
     color: #fff;
     background-color: gray;
-    font-size: 2em;
-    border-radius: 10px;
+    font-size: 1em;
+    border-radius: 5px;
 }
 .startbtn:hover{
     background-color: magenta;
@@ -32,3 +32,54 @@ header p {
 }
 /*end of landing page container css*/
 
+.quizcontainer {
+    padding: 0 10%
+}
+.Question {
+ font-size: 1.4em;
+}
+.answerbtn {
+    display:block;
+    margin: 5px 0;
+    text-align: left;
+    padding: 5px;
+    width:50px;
+    color:#fff;
+    background-color: magenta;
+    font-size:.8em;
+    border-radius: 8px;
+}
+.answerbtn:hover {
+    background-color:yellow;
+}
+.resultresponse {
+    color: brown;
+    border-top: 2x black;
+    font-size: 1.4em;
+    padding-top: 5px;
+}
+.finalcontainer {
+    margin: 0 10%;
+}
+.finalheading {
+    font-size: 1.4em;
+}
+.scoreline {
+    font-size: .8em;
+}
+form {
+    display:flex;
+}
+input {
+    width: 50px;
+}
+.submitButton {
+    padding: 10px 20px;
+    color: #fff;
+    background-color:magenta;
+    font-size: 1.4em;
+    border-radius: 5px;
+}
+.submitButton:hover {
+    background-color:yellow;
+}
