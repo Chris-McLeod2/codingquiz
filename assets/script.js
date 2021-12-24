@@ -15,13 +15,12 @@ let score = 0;
 let time = document.getElementById("time");
 let countdown = 75;
 let answer = document.querySelector(".answerbtn");
-let answerValue = answer.value;
 let endScore = 0;
 let highScores = document.getElementById("highScores")
 //end of declarations//
-
+let Quizindex =0;
 let quizQuestions = [
-  
+ 
     {
         q: "",
         answer1: "",
@@ -36,7 +35,7 @@ let quizQuestions = [
         answer2: "wrong",
         answer3: "right",
         answer4: "wrong",
-        correctAnswer: "answer3"
+        correctAnswer: "right"
     },
     {
         q:"a question2",
@@ -44,7 +43,7 @@ let quizQuestions = [
         answer2: "wrong",
         answer3: "wrong",
         answer4: "wrong",
-        correctAnswer: "answer1"
+        correctAnswer: "right"
     },
     {
         q:"a question3",
@@ -52,7 +51,7 @@ let quizQuestions = [
         answer2: "right",
         answer3: "wrong",
         answer4: "wrong",
-        correctAnswer: "answer2"
+        correctAnswer: "right"
     },
     {
         q:"a question4",
@@ -60,7 +59,7 @@ let quizQuestions = [
         answer2: "wrong",
         answer3: "right",
         answer4: "wrong",
-        correctAnswer: "answer3"
+        correctAnswer: "right"
     },
     {
      q:"a question5",
@@ -68,7 +67,7 @@ let quizQuestions = [
         answer2: "wrong",
         answer3: "wrong",
         answer4: "wrong",
-        correctAnswer: "answer1"
+        correctAnswer: "right"
     },
     {
         q:"a question6",
@@ -76,11 +75,11 @@ let quizQuestions = [
         answer2: "wrong",
         answer3: "wrong",
         answer4: "right",
-        correctAnswer: "answer4"
+        correctAnswer: "right"
     }
 ];
 
-let Quizindex =0;
+
 
 //questions array make sure to change to real questions after//
 
@@ -94,7 +93,8 @@ beginQuiz.addEventListener("click", function () {
     quizInterval = setInterval(function ()  {
         countdown--;
         time.textContent = "Time remaining: " + countdown;
-            if (countdown <=0 || quizQuestions === undefined) {
+            if (countdown <=0 || quizQuestions.length < 1) {
+                console.log("end");
                 clearInterval(quizInterval)
                 quizEnd();
             }
@@ -109,32 +109,30 @@ function endQuiz () {
 }
 
 function showQuestions() {
-    if (quizQuestions.length > 1) {
-        quizQuestions.shift();  
-    } else {
+    console.log(quizQuestions.length)
+    quizQuestions.shift(); 
+    if (quizQuestions.length < 1) {
+        console.log("endquiz")
         endQuiz();
         return;
     }
+    Question.textContent = quizQuestions[Quizindex].q;
+    btnAnswer1.textContent = quizQuestions[Quizindex].answer1;
+    btnAnswer2.textContent = quizQuestions[Quizindex].answer2;
+    btnAnswer3.textContent = quizQuestions[Quizindex].answer3;
+    btnAnswer4.textContent = quizQuestions[Quizindex].answer4;
 
+    console.log(quizQuestions.length)
     landingScreen.style.display = "none";
     quizContainer.style.display = "block";
     finalContainer.style.display = "none";
 
-    if (quizQuestions !== []) {
-        Question.textContent = quizQuestions[Quizindex].q;
-        btnAnswer1.textContent = quizQuestions[Quizindex].answer1;
-        btnAnswer2.textContent = quizQuestions[Quizindex].answer2;
-        btnAnswer3.textContent = quizQuestions[Quizindex].answer3;
-        btnAnswer4.textContent = quizQuestions[Quizindex].answer4;
-    } else {
-        endQuiz();
-    }
-
+  
 };
-
-btnAnswer1.addEventListener("click", function () {
-
-    if (answer.value == quizQuestions[Quizindex].correctAnswer) {
+function clickHandler(event) {
+var answerValue2 = event.target.innerText;
+const correctAnswer = quizQuestions[Quizindex].correctAnswer; 
+    if (answerValue2 == correctAnswer) {
         resultContainer.style.display = "block";
         results.textContent = "Correct";
         console.log(correctAnswer)
@@ -145,55 +143,26 @@ btnAnswer1.addEventListener("click", function () {
         console.log(correctAnswer)
     }
     showQuestions();
-});
-btnAnswer2.addEventListener("click", function () {
-    if (answerValue === quizQuestions[Quizindex].correctAnswer) {
-        resultContainer.style.display = 'block';
-        results.textContent = "Correct";
-        console.log(correctAnswer)
-    } else {
-        resultContainer.style.display = 'block';
-        results.textContent = "Wrong";
-        countdown -= 10;
-        console.log(correctAnswer)
-    }
-    showQuestions();
-});
-btnAnswer3.addEventListener("click", function () {
-    if (answerValue === quizQuestions[Quizindex].correctAnswer) {
-        resultContainer.style.display = 'block';
-        results.textContent = "Correct";
-        console.log(correctAnswer)
-    } else {
-        resultContainer.style.display = 'block';
-        results.textContent = "Wrong";
-        countdown -= 10;
-        console.log(correctAnswer)
-    }
-    showQuestions();
-});
-btnAnswer4.addEventListener("click", function () {
-    if (answerValue !== quizQuestions[Quizindex].correctAnswer) {
-        resultContainer.style.display = 'block';
-        results.textContent = "Correct";
-        console.log(correctAnswer)
-    } else {
-        resultContainer.style.display = 'block';
-        results.textContent = "Wrong";
-        countdown -= 10;
-        console.log(correctAnswer)
-    }
-    showQuestions();
-});
+
+}
+
+btnAnswer1.addEventListener("click", clickHandler);
+
+btnAnswer2.addEventListener("click", clickHandler);
+  
+btnAnswer3.addEventListener("click", clickHandler);
+    
+btnAnswer4.addEventListener("click", clickHandler);
+   
 
 function quizEnd() {
-    clearInterval(quizInterval);
     landingScreen.style.display = "none";
     quizContainer.style.display = " none";
     finalContainer.style.display ="block";
     resultContainer.style.display ="none";
     finalScore.textContent = countdown;
     endScore = countdown;
+    window.alert(endScore)
 };
 
 let localStorage = window.localStorage;
