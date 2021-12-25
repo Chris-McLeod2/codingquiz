@@ -103,3 +103,10 @@ input {
 .scorePageButton:hover {
     background-color: yellow;
 }
+li {
+    margin-right: 40px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    background-color: darkgray;
+}

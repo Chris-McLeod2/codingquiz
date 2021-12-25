@@ -1,5 +1,5 @@
 let header = document.querySelector("header");
-let landingscreen =document.getElementById("landingScreen");
+let landingScreen =document.getElementById("landingScreen");
 let quizContainer = document.getElementById("quizContainer");
 let finalContainer = document.getElementById("finalContainer");
 let beginQuiz = document.getElementById("beginQuiz");
@@ -162,7 +162,6 @@ function quizEnd() {
     resultContainer.style.display ="none";
     finalScore.textContent = countdown;
     endScore = countdown;
-    window.alert(endScore)
 };
 
 let localStorage = window.localStorage;
