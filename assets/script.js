@@ -30,52 +30,52 @@ let quizQuestions = [
         correctAnswer: ""
     },
     {
-        q:"a question1",
-        answer1: "wrong",
-        answer2: "wrong",
-        answer3: "right",
-        answer4: "wrong",
-        correctAnswer: "right"
+        q:"Whats a good first step in finding where your bugs are in code?",
+        answer1: "stare at your computer in confusion",
+        answer2: "consult the library",
+        answer3: "use Chrome Dev Tools to see what line the error occurs on",
+        answer4: "ask a tutor",
+        correctAnswer: "use Chrome Dev Tools to see what line the error occurs on"
     },
     {
-        q:"a question2",
-        answer1: "right",
-        answer2: "wrong",
-        answer3: "wrong",
-        answer4: "wrong",
-        correctAnswer: "right"
+        q:"What is a css Library commonly used for styling on websites",
+        answer1: "Bootstrap",
+        answer2: "React",
+        answer3: "Jquery",
+        answer4: "Node",
+        correctAnswer: "Bootstrap"
     },
     {
-        q:"a question3",
-        answer1: "wrong",
-        answer2: "right",
-        answer3: "wrong",
-        answer4: "wrong",
-        correctAnswer: "right"
+        q:"How do you call a function",
+        answer1: "Function{}",
+        answer2: "Function()",
+        answer3: "Function[]",
+        answer4: "Funtion''",
+        correctAnswer: "Function()"
     },
     {
-        q:"a question4",
-        answer1: "wrong",
-        answer2: "wrong",
-        answer3: "right",
-        answer4: "wrong",
-        correctAnswer: "right"
+        q:"what is the css to change text color",
+        answer1: "background-color:",
+        answer2: "text-color",
+        answer3: "Color:",
+        answer4: "Function(changecolor)",
+        correctAnswer: "Color:"
     },
     {
-     q:"a question5",
-        answer1: "right",
-        answer2: "wrong",
-        answer3: "wrong",
-        answer4: "wrong",
-        correctAnswer: "right"
+     q:"How do you grab an element by id in javascript",
+        answer1: "document.getElementById",
+        answer2: "document.querySelect",
+        answer3: ".Id",
+        answer4: "htmlelement=id",
+        correctAnswer: "document.getElementById"
     },
     {
-        q:"a question6",
-        answer1: "wrong",
-        answer2: "wrong",
-        answer3: "wrong",
-        answer4: "right",
-        correctAnswer: "right"
+        q:"How to hide elements with Javascript",
+        answer1: "element.hide",
+        answer2: "hide.element",
+        answer3: "vanish",
+        answer4: "style.display = 'none'",
+        correctAnswer: "style.display = 'none'"
     }
 ];
 
@@ -94,7 +94,7 @@ beginQuiz.addEventListener("click", function () {
         countdown--;
         time.textContent = "Time remaining: " + countdown;
             if (countdown <=0 || quizQuestions.length < 1) {
-                console.log("end");
+               
                 clearInterval(quizInterval)
                 quizEnd();
             }
@@ -109,10 +109,9 @@ function endQuiz () {
 }
 
 function showQuestions() {
-    console.log(quizQuestions.length)
+    
     quizQuestions.shift(); 
     if (quizQuestions.length < 1) {
-        console.log("endquiz")
         endQuiz();
         return;
     }
@@ -122,7 +121,7 @@ function showQuestions() {
     btnAnswer3.textContent = quizQuestions[Quizindex].answer3;
     btnAnswer4.textContent = quizQuestions[Quizindex].answer4;
 
-    console.log(quizQuestions.length)
+    
     landingScreen.style.display = "none";
     quizContainer.style.display = "block";
     finalContainer.style.display = "none";
@@ -135,12 +134,10 @@ const correctAnswer = quizQuestions[Quizindex].correctAnswer;
     if (answerValue2 == correctAnswer) {
         resultContainer.style.display = "block";
         results.textContent = "Correct";
-        console.log(correctAnswer)
     } else {
         resultContainer.style.display = "block";
         results.textContent = "Wrong";
         countdown -= 10;
-        console.log(correctAnswer)
     }
     showQuestions();
 

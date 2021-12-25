@@ -1,6 +1,6 @@
 let highScore = JSON.parse(localStorage.getItem("highScore"));
 let scoreList = document.getElementById("scoreList");
-console.log(highScore)
+
 
 function CreateScoreList () {
     highScore.sort(function(a,b) {
